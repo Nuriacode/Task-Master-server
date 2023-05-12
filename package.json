@@ -1,0 +1,26 @@
+{
+  "name": "task-master",
+  "version": "1.0.0",
+  "description": "gestor de tareas",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nuriacode/Task-Master.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nuriacode/Task-Master/issues"
+  },
+  "homepage": "https://github.com/Nuriacode/Task-Master#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^7.1.0"
+  }
+}
