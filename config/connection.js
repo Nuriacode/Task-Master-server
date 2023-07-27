@@ -4,7 +4,7 @@ const dbConnect = () => {
 
   const user = "nuricodesal";
   const pass = "8u781TehQgkHJCm5";
-  const dbName = "Netflix";
+  const dbName = "TaskMaster";
   const uri= `mongodb+srv://nuricodesal:${pass}@cluster0.xq7syea.mongodb.net/${dbName}?retryWrites=true&w=majority`;
 
 

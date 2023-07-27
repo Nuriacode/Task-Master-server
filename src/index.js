@@ -10,7 +10,11 @@ app.use(express.json({limit:'25mb'}));
 const port = process.env.PORT || 4000;
 
 //conectar al archivo de conexión
-// const dbConnect = require('../config/connection)
+const mongoose = require('mongoose');
+const dbConnect = require('../config/connection')
+dbConnect();
+
+const User = require('../models/users');
 
 app.listen(port, ()=>{
     console.log('servidor a su servicio en el puerto', port);
