@@ -2,6 +2,8 @@
 const express= require('express');
 const cors =  require('cors');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+// const authRoutes = require('../routes/auth');
 
 const app = express();
 
@@ -31,8 +33,23 @@ app.get('/allUsers', async (req, res) =>{
     }
 });
 
-// app.post('/login', (req, res) => {
-//     { email, password } = req.body;
+// app.use('/login', authRoutes);
 
-//     const user = users.find((u) => u.email === email)
-// })
+app.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const user = await User.findOne({email});
+        if(!user){
+            return res.status(401).json({ error: 'Email inválido'});
+        }
+        const passwordValid = bcrypt.compare(password, user.password); 
+
+        if(!passwordValid) {
+            return res.status(401).json({ error: "Contraseña incorrecta"});
+        }
+        const token = jwt.sign({ userId: user._id }, "token");
+        res.json ({token})
+    } catch (error) {
+        res.status(500).json({error: "Error en el servidor"});
+    }
+});
